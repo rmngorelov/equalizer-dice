@@ -1,0 +1,866 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Equalizer Dice</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..800;1,6..96,500..800&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+/* Chess piece glyphs: a 12-glyph subset of GNU FreeSerif Bold (GPLv3 with font exception), embedded so every device draws the same pieces. */
+@font-face{font-family:"EqPieces";src:url(data:font/woff;base64,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) format("woff");font-weight:400;font-style:normal;font-display:block;unicode-range:U+2654-265F}
+
+/* Layout: a club table. A walnut-rimmed baize tray holds the two dice and the call; the scoresheet sits beside it on wide screens; rules and odds sit underneath. */
+:root{
+  --paper:#ECEFE8;
+  --sheet:#FAFBF7;
+  --ink:#19201C;
+  --ink-2:#55605A;
+  --rule:#D0D7CD;
+  --mark:#F1E6CB;
+  --bar:#2F5E4C;
+  --felt:#22493B;
+  --felt-hi:#2F5F4D;
+  --felt-lo:#16342A;
+  --felt-ink:#F3EDE0;
+  --felt-ink-2:#B0C6B9;
+  --brass:#B8862D;
+  --brass-hi:#DDB060;
+  --brass-ink:#1D150A;
+  --brass-text:#875D14;
+  --walnut:#5A3A24;
+  --walnut-hi:#7B5334;
+  --walnut-lo:#392416;
+  --cast:rgba(10,24,18,.35);
+  --shade-c:#120A05;
+  /* dice materials: physical objects, identical in both themes */
+  --box-a:#F2DFB2; --box-b:#D8B87D; --box-edge:#BF9B60; --box-ink:#2B1C10;
+  --rose-a:#7E4532; --rose-b:#4C2518; --rose-edge:#341810; --rose-ink:#F4E8CF;
+  --f-display:"Bodoni Moda","Bodoni 72","Didot",Georgia,"Times New Roman",serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-type:"Courier Prime","Courier New",ui-monospace,monospace;
+  --f-piece:"EqPieces","Segoe UI Symbol","Apple Symbols","DejaVu Sans",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1311; --sheet:#161B18; --ink:#E6EAE3; --ink-2:#9AA69E; --rule:#29312C; --mark:#2B2617; --bar:#6FA88F;
+    --felt:#1D4135; --felt-hi:#285444; --felt-lo:#122B22; --felt-ink:#F1EBDD; --felt-ink-2:#A2B8AB;
+    --brass:#C6963E; --brass-hi:#E2B867; --brass-ink:#1A1308; --brass-text:#E2B867;
+    --walnut:#4A2F1D; --walnut-hi:#62412A; --walnut-lo:#2C1C11; --cast:rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1311; --sheet:#161B18; --ink:#E6EAE3; --ink-2:#9AA69E; --rule:#29312C; --mark:#2B2617; --bar:#6FA88F;
+  --felt:#1D4135; --felt-hi:#285444; --felt-lo:#122B22; --felt-ink:#F1EBDD; --felt-ink-2:#A2B8AB;
+  --brass:#C6963E; --brass-hi:#E2B867; --brass-ink:#1A1308; --brass-text:#E2B867;
+  --walnut:#4A2F1D; --walnut-hi:#62412A; --walnut-lo:#2C1C11; --cast:rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--f-body);font-size:16px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:22px 44px;
+  -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{max-width:1100px;margin:0 auto;display:grid;gap:26px}
+
+/* header */
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 16px}
+h1{min-width:0;margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(32px,5.4vw,50px);line-height:1;letter-spacing:-.012em;text-wrap:balance}
+.lede{grid-column:1 / -1;margin:0;max-width:46ch;color:var(--ink-2)}
+.chip-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);font-size:14px;font-weight:700;cursor:pointer}
+.chip-btn svg{flex:none}
+.chip-btn .mute{display:none}
+.chip-btn.off{color:var(--ink-2)}
+.chip-btn.off .wave{display:none}
+.chip-btn.off .mute{display:inline}
+
+/* main grid */
+.grid{display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);align-items:start}}
+.play{display:grid;gap:12px;min-width:0}
+
+/* whose turn, read like the two faces of a chess clock */
+.turns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.turn{display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;min-height:50px;min-width:0;padding:8px 12px;border:1px solid var(--rule);border-radius:10px;background:transparent;color:var(--ink-2);text-align:left;cursor:pointer;touch-action:manipulation}
+.turn .k{flex:none;font-family:var(--f-piece);font-size:30px;line-height:1;transform:translateY(.025em)}
+.turn .t-name{font-size:16px;font-weight:700}
+.turn .t-state{margin-left:auto;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.turn[aria-pressed="true"]{background:var(--sheet);color:var(--ink);border-color:var(--ink);box-shadow:0 10px 22px -16px var(--cast)}
+.turn[aria-pressed="true"] .t-state{color:var(--brass-text)}
+.turn:disabled{cursor:default;border-style:dashed}
+
+/* the tray */
+.table{padding:9px;border-radius:22px;background:linear-gradient(150deg,var(--walnut-hi),var(--walnut) 42%,var(--walnut-lo));box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(0,0,0,.3),0 22px 40px -26px var(--cast)}
+.felt{
+  --size:clamp(78px,23vw,126px);
+  position:relative;overflow:hidden;display:grid;gap:2px;
+  padding:10px 14px 18px;border-radius:14px;
+  background:radial-gradient(120% 90% at 50% 32%,var(--felt-hi),var(--felt) 55%,var(--felt-lo));
+  box-shadow:inset 0 3px 16px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.35);
+}
+.felt::before{content:"";position:absolute;inset:0;background-image:var(--noise,none);background-size:128px 128px;opacity:.5;mix-blend-mode:soft-light;pointer-events:none}
+.stage{position:relative;display:flex;justify-content:center;gap:clamp(6px,3vw,36px);height:calc(var(--size)*2.15)}
+.slot{position:relative;display:grid;place-items:center;width:calc(var(--size)*1.55);height:100%;perspective:760px}
+.shade-floor{position:absolute;left:50%;top:50%;width:calc(var(--size)*1.1);height:calc(var(--size)*.62);margin:calc(var(--size)*-.31) 0 0 calc(var(--size)*-.55);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.62),rgba(0,0,0,.28) 55%,rgba(0,0,0,0));pointer-events:none;will-change:transform,opacity}
+.lift{transform-style:preserve-3d;will-change:transform}
+.view{transform-style:preserve-3d}
+.die{position:relative;width:var(--size);height:var(--size);transform-style:preserve-3d;will-change:transform;--half:calc(var(--size)/2)}
+.face{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;border-radius:15%;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.face::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--shade-c);opacity:var(--shade,.25);pointer-events:none}
+.f-front{transform:translateZ(var(--half))}
+.f-back{transform:rotateY(180deg) translateZ(var(--half))}
+.f-right{transform:rotateY(90deg) translateZ(var(--half))}
+.f-left{transform:rotateY(-90deg) translateZ(var(--half))}
+.f-top{transform:rotateX(90deg) translateZ(var(--half))}
+.f-bottom{transform:rotateX(-90deg) translateZ(var(--half))}
+.core{position:absolute;inset:2%;border-radius:10%}
+.core.cx{transform:rotateY(90deg)}
+.core.cy{transform:rotateX(90deg)}
+.glyph{position:relative;font-family:var(--f-piece);font-size:calc(var(--size)*.92);line-height:1;transform:translateY(.025em)}
+.die.box .face{
+  background:
+    radial-gradient(120% 95% at 28% 18%,rgba(255,250,232,.6),rgba(255,250,232,0) 58%),
+    repeating-linear-gradient(97deg,rgba(110,70,25,.07) 0 2px,rgba(110,70,25,0) 2px 7px),
+    linear-gradient(160deg,var(--box-a),var(--box-b));
+  box-shadow:inset 0 0 0 1px rgba(80,50,15,.18),inset 0 0 calc(var(--size)*.1) rgba(90,55,15,.28);
+}
+.die.box .core{background:var(--box-edge)}
+.die.box .glyph{color:var(--box-ink);text-shadow:0 1px 0 rgba(255,244,214,.7),0 -1px 0 rgba(60,35,10,.25)}
+.die.rose .face{
+  background:
+    radial-gradient(120% 95% at 28% 18%,rgba(255,220,200,.22),rgba(255,220,200,0) 58%),
+    repeating-linear-gradient(97deg,rgba(20,5,0,.12) 0 2px,rgba(20,5,0,0) 2px 6px),
+    linear-gradient(160deg,var(--rose-a),var(--rose-b));
+  box-shadow:inset 0 0 0 1px rgba(255,210,190,.1),inset 0 0 calc(var(--size)*.1) rgba(20,5,0,.4);
+}
+.die.rose .core{background:var(--rose-edge)}
+.die.rose .glyph{color:var(--rose-ink);text-shadow:0 -1px 0 rgba(20,5,0,.6),0 1px 0 rgba(255,230,210,.12)}
+
+/* the call: what the roll lets you do */
+.call{position:relative;display:grid;justify-items:center;align-content:start;min-height:132px;text-align:center;color:var(--felt-ink)}
+.c-eyebrow{margin:0;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--felt-ink-2)}
+.c-head{margin:4px 0 0;font-family:var(--f-display);font-weight:700;font-size:clamp(30px,7.6vw,46px);line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+.c-head em{padding:0 .06em;font-style:italic;font-weight:500;color:var(--felt-ink-2)}
+.c-head.is-dbl{color:var(--brass-hi)}
+.c-head.is-wait{color:var(--felt-ink-2)}
+.c-sub{margin:6px 0 0;max-width:34ch}
+.c-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;min-height:26px;margin-top:10px}
+.tag-c{display:inline-flex;align-items:center;padding:3px 10px;border:1px solid currentColor;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.tag-c.yes{color:var(--brass-hi)}
+.tag-c.no{color:var(--felt-ink-2);border-style:dashed}
+.call.reveal{animation:reveal .26s ease-out}
+@keyframes reveal{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* actions */
+.actions{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:10px}
+.btn-roll{display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:10px 16px;border:0;border-radius:12px;background:linear-gradient(180deg,var(--brass-hi),var(--brass));color:var(--brass-ink);font-size:18px;font-weight:700;line-height:1.15;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 0 rgba(0,0,0,.18),0 10px 20px -14px var(--cast)}
+.btn-roll .k{font-family:var(--f-piece);font-size:30px;line-height:1;transform:translateY(.025em)}
+.btn-roll:active{transform:translateY(1px)}
+.btn-roll[aria-disabled="true"]{cursor:progress;filter:saturate(.7)}
+.btn-reroll{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:60px;padding:8px 10px;border:1.5px solid var(--ink);border-radius:12px;background:transparent;text-align:center;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-reroll .rr-main{font-size:16px;font-weight:700;line-height:1.2}
+.btn-reroll .rr-sub{font-size:12.5px;line-height:1.25;color:var(--ink-2)}
+.btn-reroll:disabled{border-color:var(--rule);color:var(--ink-2);cursor:not-allowed}
+.btn-reroll[aria-disabled="true"]{cursor:progress}
+.keys{display:none;margin:0;font-size:13px;color:var(--ink-2)}
+.keys kbd{padding:1px 6px;border:1px solid var(--rule);border-bottom-width:2px;border-radius:5px;background:var(--sheet);color:var(--ink);font-family:var(--f-type);font-size:12px}
+@media (hover:hover) and (pointer:fine){.keys{display:block}}
+
+/* scoresheet panel */
+.panel{display:grid;gap:14px;min-width:0;padding:16px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet)}
+.panel-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}
+h2{margin:0;font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1.1;letter-spacing:-.005em;text-wrap:balance}
+.stats{margin:0;font-family:var(--f-type);font-size:13.5px;color:var(--ink-2)}
+.who{min-width:0;margin:0;padding:0;border:0}
+.who legend{margin:0 0 6px;padding:0;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.seg{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding:3px;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}
+.seg input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.seg label{display:grid;place-items:center;min-height:38px;padding:6px 4px;border-radius:7px;font-size:14px;font-weight:700;line-height:1.15;text-align:center;color:var(--ink-2);cursor:pointer}
+.seg input:checked+label{background:var(--sheet);color:var(--ink);box-shadow:0 0 0 1px var(--rule),0 2px 6px -3px var(--cast)}
+.seg input:focus-visible+label{outline:2px solid var(--ink);outline-offset:2px}
+.who-note{margin:8px 0 0;font-size:13.5px;line-height:1.4;color:var(--ink-2)}
+.score-wrap{max-height:340px;overflow:auto;overscroll-behavior:contain;border-top:2px solid var(--ink)}
+.score{width:100%;border-collapse:collapse}
+.score th{position:sticky;top:0;z-index:1;padding:7px 8px;border-bottom:1px solid var(--ink);background:var(--sheet);text-align:left;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.score td{height:42px;padding:6px 8px;border-bottom:1px solid var(--rule);vertical-align:middle}
+.score td+td,.score th+th{border-left:1px solid var(--rule)}
+.score .no{width:3.4em;font-family:var(--f-type);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.score td.cur{background:var(--mark)}
+.cell{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.pair{display:inline-flex;gap:3px}
+.try{font-family:var(--f-type);font-size:13px;color:var(--ink-2)}
+.dbl{font-family:var(--f-type);font-size:12px;font-weight:700;color:var(--brass-text)}
+.free{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.score-note{margin:8px 0 0;font-size:13.5px;line-height:1.4;color:var(--ink-2)}
+.mini{display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:6px;font-family:var(--f-piece);font-size:24px;line-height:1}
+.mini.box{background:linear-gradient(160deg,var(--box-a),var(--box-b));color:var(--box-ink);box-shadow:inset 0 0 0 1px rgba(80,50,15,.22)}
+.mini.rose{background:linear-gradient(160deg,var(--rose-a),var(--rose-b));color:var(--rose-ink);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.mini.plain{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
+.ng{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.ng p{margin:0 auto 0 0;font-weight:700}
+.btn-quiet,.btn-solid{min-height:40px;padding:8px 14px;border:1px solid var(--rule);border-radius:8px;background:transparent;font-size:14px;font-weight:700;cursor:pointer}
+.btn-solid{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+
+/* rules and odds */
+.ref{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;padding-top:22px;border-top:1px solid var(--rule)}
+@media (min-width:900px){.ref{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
+.rules dl{display:grid;grid-template-columns:minmax(0,8em) minmax(0,1fr);gap:14px 18px;margin:16px 0 0}
+.rules dt{padding-top:3px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.rules dd{max-width:60ch;margin:0}
+.dice-rows{display:grid;gap:8px;margin-bottom:8px}
+.dice-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.dice-row .lbl{width:4.6em;font-family:var(--f-type);font-size:13.5px;color:var(--ink-2)}
+@media (max-width:540px){.rules dl{grid-template-columns:minmax(0,1fr);gap:4px}.rules dd{margin-bottom:12px}}
+.odds .note{margin:6px 0 0;font-size:14.5px;color:var(--ink-2)}
+.o-list{display:grid;gap:9px;margin:14px 0 0;padding:0;list-style:none}
+.o-list li{display:grid;grid-template-columns:minmax(0,8.6em) minmax(0,1fr) 2.8em 3.2em;align-items:center;gap:10px}
+.o-name{display:flex;align-items:center;gap:8px;min-width:0;font-weight:700}
+.o-bar{height:10px;overflow:hidden;border-radius:5px;background:var(--rule)}
+.o-bar i{display:block;height:100%;border-radius:inherit;background:var(--bar)}
+.o-num{font-family:var(--f-type);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.o-frac{font-family:var(--f-type);font-size:13px;text-align:right;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.o-list.extra{margin-top:16px;padding-top:14px;border-top:1px dashed var(--rule)}
+.foot{max-width:70ch;font-size:13.5px;color:var(--ink-2)}
+
+@media (prefers-reduced-motion:reduce){.call.reveal{animation:none}.btn-roll:active{transform:none}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>Equalizer Dice</h1>
+    <button class="chip-btn" id="sound" type="button" aria-pressed="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" stroke="none"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7"/><path class="wave" d="M19.5 5.5a9 9 0 0 1 0 13"/><path class="mute" d="M16 9l6 6M22 9l-6 6"/></svg>
+      <span id="sound-label">Sound on</span>
+    </button>
+    <p class="lede">Roll both dice, then move one of the pieces they show. Doubles mean any legal move.</p>
+  </header>
+
+  <main class="grid">
+    <section class="play" aria-label="Dice tray">
+      <div class="turns" role="group" aria-label="Whose turn">
+        <button class="turn" id="turn-w" type="button" aria-pressed="true"><span class="k" aria-hidden="true">&#x2654;&#xFE0E;</span><span class="t-name">White</span><span class="t-state" id="ts-w">To roll</span></button>
+        <button class="turn" id="turn-b" type="button" aria-pressed="false"><span class="k" aria-hidden="true">&#x265A;&#xFE0E;</span><span class="t-name">Black</span><span class="t-state" id="ts-b">Waiting</span></button>
+      </div>
+
+      <div class="table">
+        <div class="felt" id="felt">
+          <div class="stage" id="stage" role="img" aria-label="Die 1 shows King. Die 2 shows Queen.">
+            <div class="slot"><div class="shade-floor"></div><div class="lift"><div class="view"><div class="die box" id="die0"></div></div></div></div>
+            <div class="slot"><div class="shade-floor"></div><div class="lift"><div class="view"><div class="die rose" id="die1"></div></div></div></div>
+          </div>
+          <div class="call" id="call" aria-live="polite" aria-atomic="true">
+            <p class="c-eyebrow" id="c-eyebrow">New game</p>
+            <p class="c-head" id="c-head">White rolls first</p>
+            <p class="c-sub" id="c-sub">Press Roll to throw both dice.</p>
+            <div class="c-tags" id="c-tags"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-roll" id="roll" type="button" aria-disabled="false"><span class="k" id="roll-k" aria-hidden="true">&#x2654;&#xFE0E;</span><span id="roll-label">Roll for White</span></button>
+        <button class="btn-reroll" id="reroll" type="button" disabled><span class="rr-main">Re-roll</span><span class="rr-sub">No legal move</span></button>
+      </div>
+      <p class="keys">Keyboard: <kbd>Space</kbd> rolls, <kbd>R</kbd> re-rolls.</p>
+    </section>
+
+    <aside class="panel" aria-labelledby="sheet-h">
+      <div class="panel-head">
+        <h2 id="sheet-h">Scoresheet</h2>
+        <p class="stats" id="stats">No rolls yet</p>
+      </div>
+      <fieldset class="who">
+        <legend>Who rolls</legend>
+        <div class="seg">
+          <input type="radio" name="who" id="who-both" value="both" checked><label for="who-both">Both</label>
+          <input type="radio" name="who" id="who-white" value="white"><label for="who-white">White only</label>
+          <input type="radio" name="who" id="who-black" value="black"><label for="who-black">Black only</label>
+        </div>
+        <p class="who-note">Only one side rolling works as a handicap for the stronger player.</p>
+      </fieldset>
+      <div>
+        <div class="score-wrap" id="score-wrap">
+          <table class="score">
+            <thead><tr><th scope="col">No.</th><th scope="col">White</th><th scope="col">Black</th></tr></thead>
+            <tbody id="score-body"><tr><td class="no">1.</td><td></td><td></td></tr></tbody>
+          </table>
+        </div>
+        <p class="score-note" id="score-note">Each roll lands here, one row per move.</p>
+      </div>
+      <div class="ng" id="ng-idle"><button class="btn-quiet" id="ng" type="button">New game</button></div>
+      <div class="ng" id="ng-confirm" hidden><p>Clear this scoresheet?</p><button class="btn-quiet" id="ng-no" type="button">Keep playing</button><button class="btn-solid" id="ng-yes" type="button">Clear</button></div>
+    </aside>
+  </main>
+
+  <section class="ref" aria-label="Rules and odds">
+    <div class="rules">
+      <h2>Rules</h2>
+      <dl>
+        <dt>The dice</dt>
+        <dd>
+          <div class="dice-rows">
+            <div class="dice-row"><span class="lbl">Die 1</span><span class="dice-row" id="faces0"></span></div>
+            <div class="dice-row"><span class="lbl">Die 2</span><span class="dice-row" id="faces1"></span></div>
+          </div>
+          Die 1 has every piece once. Die 2 has no king and two pawns.
+        </dd>
+        <dt>Your turn</dt>
+        <dd>Roll both dice and move a piece of either type shown. If neither type can make a legal move, roll again.</dd>
+        <dt>Doubles</dt>
+        <dd>Both dice show the same piece. Play any legal move.</dd>
+        <dt>Castling</dt>
+        <dd>Allowed when it is legal and you rolled a king, a rook, or doubles.</dd>
+        <dt>In check</dt>
+        <dd>Only a legal answer to the check is allowed. Capture the checking piece, move the king, or block with another piece.</dd>
+        <dt>Winning</dt>
+        <dd>Checkmate ends the game.</dd>
+        <dt>Agree first</dt>
+        <dd>The rules leave two things open. Do the dice still limit you while you are in check? And does everyone roll, or only the stronger player? Settle both before the first move.</dd>
+      </dl>
+    </div>
+    <div class="odds">
+      <h2>Odds on any roll</h2>
+      <p class="note">Chance a single roll lets you move each piece. Doubles count, because they allow any legal move.</p>
+      <ul class="o-list" id="o-list"></ul>
+      <ul class="o-list extra" id="o-extra"></ul>
+    </div>
+  </section>
+
+  <footer class="foot">Every face is equally likely. Rolls come from your browser's secure random number generator, and your game stays saved in this browser until you start a new one.</footer>
+</div>
+
+<script>
+(() => {
+  'use strict';
+  const VS = '︎';
+  const PIECES = {
+    K: { name: 'King',   g: '♚' },
+    Q: { name: 'Queen',  g: '♛' },
+    R: { name: 'Rook',   g: '♜' },
+    B: { name: 'Bishop', g: '♝' },
+    N: { name: 'Knight', g: '♞' },
+    P: { name: 'Pawn',   g: '♟' }
+  };
+  const DICE = [['K', 'Q', 'B', 'N', 'R', 'P'], ['Q', 'B', 'N', 'R', 'P', 'P']];
+  const FACES = ['front', 'right', 'back', 'left', 'top', 'bottom'];
+  const FACE_ROT = { front: [0, 0], right: [0, -90], back: [0, 180], left: [0, 90], top: [-90, 0], bottom: [90, 0] };
+  const NORMAL = { front: [0, 0, 1], back: [0, 0, -1], right: [1, 0, 0], left: [-1, 0, 0], top: [0, -1, 0], bottom: [0, 1, 0] };
+  const SIDE = { w: 'White', b: 'Black' };
+  const KING = { w: '♔', b: '♚' };
+  const KEY = 'equalizer-dice:v1';
+  const VIEW_ANG = [[-26, -18], [-26, 18]];
+  const REST_TILT = [-7, 6];
+  const LAND = [0.5, 0.76, 0.9];
+  const LAND_VOL = [1, 0.42, 0.16];
+
+  const $ = id => document.getElementById(id);
+  const rad = d => d * Math.PI / 180;
+  const rx = a => { const c = Math.cos(rad(a)), s = Math.sin(rad(a)); return [[1, 0, 0], [0, c, -s], [0, s, c]]; };
+  const ry = a => { const c = Math.cos(rad(a)), s = Math.sin(rad(a)); return [[c, 0, s], [0, 1, 0], [-s, 0, c]]; };
+  const rz = a => { const c = Math.cos(rad(a)), s = Math.sin(rad(a)); return [[c, -s, 0], [s, c, 0], [0, 0, 1]]; };
+  const mm = (A, B) => A.map(r => [0, 1, 2].map(j => r[0] * B[0][j] + r[1] * B[1][j] + r[2] * B[2][j]));
+  const mv = (M, v) => M.map(r => r[0] * v[0] + r[1] * v[1] + r[2] * v[2]);
+  const VIEW = VIEW_ANG.map(([x, y]) => mm(rx(x), ry(y)));
+  const LIGHT = (() => { const v = [-0.2, -0.2, 1], l = Math.hypot(v[0], v[1], v[2]); return v.map(c => c / l); })();
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const wrapDeg = a => ((a % 360) + 540) % 360 - 180;
+
+  // Unbiased die roll from the browser's cryptographic generator.
+  function randInt(n) {
+    try {
+      const buf = new Uint32Array(1), lim = Math.floor(4294967296 / n) * n;
+      let x;
+      do { crypto.getRandomValues(buf); x = buf[0]; } while (x >= lim);
+      return x % n;
+    } catch (e) { return Math.floor(Math.random() * n); }
+  }
+
+  /* ---------- state ---------- */
+  const fresh = () => ({ mode: 'both', turn: 'w', phase: 'ready', log: [], face: [0, 0], sound: true });
+  const okRoll = r => Array.isArray(r) && r.length === 2 && r.every(n => Number.isInteger(n) && n >= 0 && n < 6);
+  const finalRoll = e => e.rolls[e.rolls.length - 1];
+  function clean(s) {
+    const out = fresh();
+    if (!s || typeof s !== 'object') return out;
+    if (['both', 'white', 'black'].includes(s.mode)) out.mode = s.mode;
+    if (s.turn === 'w' || s.turn === 'b') out.turn = s.turn;
+    if (s.phase === 'ready' || s.phase === 'rolled') out.phase = s.phase;
+    if (typeof s.sound === 'boolean') out.sound = s.sound;
+    if (okRoll(s.face)) out.face = s.face.slice();
+    if (Array.isArray(s.log)) {
+      out.log = s.log
+        .filter(e => e && (e.side === 'w' || e.side === 'b') && Array.isArray(e.rolls) && e.rolls.length && e.rolls.every(okRoll))
+        .map(e => ({ side: e.side, rolls: e.rolls.map(r => r.slice()) }));
+    }
+    if (!out.log.length) out.phase = 'ready';
+    if (out.phase === 'rolled') {
+      const e = out.log[out.log.length - 1];
+      out.turn = e.side;
+      out.face = finalRoll(e).slice();
+    }
+    return out;
+  }
+  let S = fresh();
+  let rolling = false;
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* storage unavailable */ } }
+  function loadSaved() { try { const raw = localStorage.getItem(KEY); return raw ? JSON.parse(raw) : null; } catch (e) { return null; } }
+
+  /* ---------- rules ---------- */
+  const castleOK = (a, b) => a === b || a === 'K' || a === 'R' || b === 'K' || b === 'R';
+  const canRoll = s => S.mode === 'both' || (S.mode === 'white' ? s === 'w' : s === 'b');
+  const nextSide = s => S.mode === 'white' ? 'w' : S.mode === 'black' ? 'b' : (s === 'w' ? 'b' : 'w');
+  const rollSide = () => S.phase === 'ready' ? S.turn : nextSide(S.turn);
+  const whom = p => p === 'K' ? 'the king' : 'any ' + PIECES[p].name.toLowerCase();
+
+  function computeOdds() {
+    const [d1, d2] = DICE, total = d1.length * d2.length;
+    const can = { K: 0, Q: 0, B: 0, N: 0, R: 0, P: 0 };
+    let dbl = 0, castle = 0;
+    for (const a of d1) for (const b of d2) {
+      const double = a === b;
+      if (double) dbl++;
+      for (const k in can) if (double || a === k || b === k) can[k]++;
+      if (castleOK(a, b)) castle++;
+    }
+    return { total, can, dbl, castle };
+  }
+
+  /* ---------- dice ---------- */
+  const dieEl = [], liftEl = [], floorEl = [], faceEl = [[], []];
+  const rot = [{ x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 0 }];
+  const pos = [{ x: 0, y: 0 }, { x: 0, y: 0 }];
+  const G = { size: 96 };
+
+  function buildDice() {
+    for (let d = 0; d < 2; d++) {
+      const die = $('die' + d);
+      die.textContent = '';
+      faceEl[d] = [];
+      ['cx', 'cy', 'cz'].forEach(c => { const k = document.createElement('div'); k.className = 'core ' + c; die.appendChild(k); });
+      DICE[d].forEach((p, i) => {
+        const f = document.createElement('div');
+        f.className = 'face f-' + FACES[i];
+        const g = document.createElement('span');
+        g.className = 'glyph';
+        g.textContent = PIECES[p].g + VS;
+        f.appendChild(g);
+        die.appendChild(f);
+        faceEl[d].push(f);
+      });
+      dieEl[d] = die;
+      const view = die.parentElement;
+      view.style.transform = `rotateX(${VIEW_ANG[d][0]}deg) rotateY(${VIEW_ANG[d][1]}deg)`;
+      liftEl[d] = view.parentElement;
+      floorEl[d] = liftEl[d].parentElement.querySelector('.shade-floor');
+    }
+  }
+  function measure() { G.size = dieEl[0].offsetWidth || 96; }
+
+  function applyDie(d, r, h, p) {
+    const s = G.size;
+    dieEl[d].style.transform = `rotateZ(${r.z.toFixed(2)}deg) rotateX(${r.x.toFixed(2)}deg) rotateY(${r.y.toFixed(2)}deg)`;
+    liftEl[d].style.transform = `translate3d(${p.x.toFixed(1)}px, ${(p.y - h * s * 0.26).toFixed(1)}px, ${(h * s * 1.1).toFixed(1)}px)`;
+    floorEl[d].style.transform = `translate(${(p.x + s * 0.1 + h * s * 0.3).toFixed(1)}px, ${(p.y + s * 0.42 + h * s * 0.2).toFixed(1)}px) scale(${(1 + h * 0.5).toFixed(3)})`;
+    floorEl[d].style.opacity = (0.85 - h * 0.55).toFixed(3);
+    // Light each face from the upper left, so the cube reads as solid while it tumbles.
+    const M = mm(VIEW[d], mm(rz(r.z), mm(rx(r.x), ry(r.y))));
+    for (let i = 0; i < 6; i++) {
+      const n = mv(M, NORMAL[FACES[i]]);
+      const lit = Math.max(0, n[0] * LIGHT[0] + n[1] * LIGHT[1] + n[2] * LIGHT[2]);
+      faceEl[d][i].style.setProperty('--shade', (0.6 * (1 - lit)).toFixed(3));
+    }
+  }
+
+  // Height of the toss: one big hop, then two small bounces.
+  function lift(t) {
+    if (t < LAND[0]) { const u = t / LAND[0]; return 4 * u * (1 - u); }
+    if (t < LAND[1]) { const u = (t - LAND[0]) / (LAND[1] - LAND[0]); return 0.26 * 4 * u * (1 - u); }
+    if (t < LAND[2]) { const u = (t - LAND[1]) / (LAND[2] - LAND[1]); return 0.07 * 4 * u * (1 - u); }
+    return 0;
+  }
+
+  function plan(d, face) {
+    const [bx, by] = FACE_ROT[FACES[face]];
+    const from = rot[d];
+    const sgn = () => (Math.random() < 0.5 ? -1 : 1);
+    const dx = sgn() * (2 + Math.random()) * 360;
+    const dy = sgn() * (1 + Math.random() * 1.5) * 360;
+    const dz = Math.random() < 0.4 ? sgn() * 360 : 0;
+    const tilt = (Math.random() * 2 - 1) * 13;
+    return {
+      to: {
+        x: bx + 360 * Math.round((from.x + dx - bx) / 360),
+        y: by + 360 * Math.round((from.y + dy - by) / 360),
+        z: tilt + 360 * Math.round((from.z + dz - tilt) / 360)
+      },
+      p: { x: (Math.random() * 2 - 1) * G.size * 0.12, y: (Math.random() * 2 - 1) * G.size * 0.08 },
+      dur: 1150 + Math.random() * 300,
+      delay: d * 70
+    };
+  }
+
+  function animate(r) {
+    rolling = true;
+    save();
+    renderTurns(); renderCall(false); renderActions();
+    const plans = [0, 1].map(d => plan(d, r[d]));
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      for (let d = 0; d < 2; d++) {
+        const to = plans[d].to;
+        rot[d] = { x: wrapDeg(to.x), y: wrapDeg(to.y), z: wrapDeg(to.z) };
+        pos[d] = plans[d].p;
+        applyDie(d, rot[d], 0, pos[d]);
+      }
+      S.face = r.slice();
+      rolling = false;
+      save();
+      render(true);
+    };
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { clack(0.6, true); finish(); return; }
+    const from = rot.map(o => ({ ...o })), p0 = pos.map(o => ({ ...o }));
+    const landed = [[false, false, false], [false, false, false]];
+    let t0 = null;
+    const frame = now => {
+      if (finished) return;
+      if (t0 === null) t0 = now;
+      let done = true;
+      for (let d = 0; d < 2; d++) {
+        const P = plans[d];
+        const t = Math.min(1, Math.max(0, (now - t0 - P.delay) / P.dur));
+        if (t < 1) done = false;
+        const e = 1 - Math.pow(1 - t, 3);
+        const q = Math.min(1, t / 0.9), ep = 1 - (1 - q) * (1 - q);
+        applyDie(d,
+          { x: lerp(from[d].x, P.to.x, e), y: lerp(from[d].y, P.to.y, e), z: lerp(from[d].z, P.to.z, e) },
+          lift(t),
+          { x: lerp(p0[d].x, P.p.x, ep), y: lerp(p0[d].y, P.p.y, ep) });
+        for (let i = 0; i < LAND.length; i++) {
+          if (!landed[d][i] && t >= LAND[i]) { landed[d][i] = true; clack(LAND_VOL[i], d === 0); }
+        }
+      }
+      if (done) finish(); else requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+    setTimeout(finish, 4000); // never leave the dice stuck if frames stop arriving
+  }
+
+  /* ---------- sound: a short wooden clack, synthesized ---------- */
+  let ac = null, noise = null;
+  function audio() {
+    if (!S.sound) return null;
+    try {
+      if (!ac) {
+        const C = window.AudioContext || window.webkitAudioContext;
+        if (!C) return null;
+        ac = new C();
+        const len = Math.floor(ac.sampleRate * 0.05);
+        noise = ac.createBuffer(1, len, ac.sampleRate);
+        const ch = noise.getChannelData(0);
+        for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 4);
+      }
+      if (ac.state === 'suspended') ac.resume();
+      return ac;
+    } catch (e) { return null; }
+  }
+  function clack(vol, light) {
+    const a = audio();
+    if (!a) return;
+    try {
+      const t = a.currentTime + 0.005;
+      const src = a.createBufferSource();
+      src.buffer = noise;
+      const bp = a.createBiquadFilter();
+      bp.type = 'bandpass';
+      bp.frequency.value = (light ? 2900 : 2200) * (0.85 + Math.random() * 0.3);
+      bp.Q.value = 4;
+      const g = a.createGain();
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.55 * vol, t + 0.002);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.045);
+      src.connect(bp); bp.connect(g); g.connect(a.destination);
+      src.start(t); src.stop(t + 0.06);
+      const o = a.createOscillator();
+      o.type = 'triangle';
+      o.frequency.setValueAtTime(light ? 520 : 380, t);
+      o.frequency.exponentialRampToValueAtTime(light ? 260 : 180, t + 0.05);
+      const g2 = a.createGain();
+      g2.gain.setValueAtTime(0.0001, t);
+      g2.gain.exponentialRampToValueAtTime(0.18 * vol, t + 0.003);
+      g2.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+      o.connect(g2); g2.connect(a.destination);
+      o.start(t); o.stop(t + 0.09);
+    } catch (e) { /* audio is optional */ }
+  }
+
+  /* ---------- rendering ---------- */
+  function renderTurns() {
+    for (const s of ['w', 'b']) {
+      const btn = $('turn-' + s), st = $('ts-' + s);
+      const allowed = canRoll(s), active = allowed && S.turn === s;
+      btn.setAttribute('aria-pressed', String(active));
+      btn.disabled = !allowed;
+      st.textContent = !allowed ? 'No dice' : !active ? 'Waiting' : rolling ? 'Rolling' : S.phase === 'ready' ? 'To roll' : 'Moving';
+    }
+  }
+
+  function renderCall(reveal) {
+    const call = $('call'), eb = $('c-eyebrow'), hd = $('c-head'), sb = $('c-sub'), tg = $('c-tags');
+    hd.className = 'c-head';
+    const e = S.log[S.log.length - 1];
+    if (rolling) {
+      call.setAttribute('aria-busy', 'true');
+      eb.textContent = SIDE[S.turn] + ' is rolling';
+      hd.textContent = 'Rolling';
+      hd.classList.add('is-wait');
+      sb.textContent = ' ';
+      tg.textContent = '';
+      return;
+    }
+    call.removeAttribute('aria-busy');
+    if (S.phase === 'ready' || !e) {
+      eb.textContent = S.log.length ? 'Up next' : 'New game';
+      hd.textContent = SIDE[S.turn] + (S.log.length ? ' to roll' : ' rolls first');
+      sb.textContent = 'Press Roll to throw both dice.';
+      tg.textContent = '';
+    } else {
+      const [i, j] = finalRoll(e), a = DICE[0][i], b = DICE[1][j];
+      eb.textContent = SIDE[e.side] + (e.rolls.length > 1 ? ' re-rolled' : ' rolled');
+      if (a === b) {
+        hd.textContent = 'Doubles';
+        hd.classList.add('is-dbl');
+        sb.textContent = 'Both dice show a ' + PIECES[a].name.toLowerCase() + '. Play any legal move.';
+      } else {
+        hd.innerHTML = PIECES[a].name + ' <em>or</em> ' + PIECES[b].name;
+        sb.textContent = 'Move ' + whom(a) + ' or ' + whom(b) + '.';
+      }
+      tg.innerHTML = castleOK(a, b)
+        ? '<span class="tag-c yes">Castling allowed</span>'
+        : '<span class="tag-c no">No castling</span>';
+    }
+    if (reveal) { call.classList.remove('reveal'); void call.offsetWidth; call.classList.add('reveal'); }
+  }
+
+  function renderActions() {
+    const s = rollSide();
+    $('roll-label').textContent = 'Roll for ' + SIDE[s];
+    $('roll-k').textContent = KING[s] + VS;
+    $('roll').setAttribute('aria-disabled', String(rolling));
+    const rr = $('reroll');
+    rr.disabled = S.phase !== 'rolled' || !S.log.length;
+    rr.setAttribute('aria-disabled', String(rolling));
+  }
+
+  function rows() {
+    const out = [];
+    let cur = null;
+    S.log.forEach((e, idx) => {
+      if (!cur || cur[e.side] || (e.side === 'w' && cur.b)) { cur = { no: out.length + 1, w: null, b: null }; out.push(cur); }
+      cur[e.side] = { e, idx };
+    });
+    return out;
+  }
+  function cellHTML(c, isLastRow) {
+    if (!c) return isLastRow && S.mode === 'both' ? '' : '<span class="free">free</span>';
+    const e = c.e, [i, j] = finalRoll(e), a = DICE[0][i], b = DICE[1][j];
+    const n = e.rolls.length - 1;
+    const label = (a === b ? 'Doubles, ' + PIECES[a].name : PIECES[a].name + ' and ' + PIECES[b].name)
+      + (n ? ', after ' + n + ' re-roll' + (n > 1 ? 's' : '') : '');
+    const tries = e.rolls.slice(0, -1).map(r => `<s class="try" aria-hidden="true">${DICE[0][r[0]]}·${DICE[1][r[1]]}</s>`).join('');
+    return `<span class="cell" title="${label}"><span class="sr">${label}</span>${tries}`
+      + `<span class="pair" aria-hidden="true"><span class="mini box">${PIECES[a].g}${VS}</span><span class="mini rose">${PIECES[b].g}${VS}</span></span>`
+      + (a === b ? '<span class="dbl" aria-hidden="true">dbl</span>' : '') + '</span>';
+  }
+  function renderScore() {
+    const list = rows(), body = $('score-body'), last = S.log.length - 1;
+    if (!list.length) {
+      body.innerHTML = '<tr><td class="no">1.</td><td></td><td></td></tr>';
+      $('score-note').textContent = 'Each roll lands here, one row per move.';
+    } else {
+      body.innerHTML = list.map((r, k) => {
+        const isLast = k === list.length - 1;
+        const td = s => `<td${r[s] && r[s].idx === last ? ' class="cur"' : ''}>${cellHTML(r[s], isLast)}</td>`;
+        return `<tr><td class="no">${r.no}.</td>${td('w')}${td('b')}</tr>`;
+      }).join('');
+      $('score-note').textContent = 'Struck letters were re-rolled. dbl marks doubles.';
+    }
+    const total = S.log.reduce((t, e) => t + e.rolls.length, 0);
+    const dbl = S.log.reduce((t, e) => { const f = finalRoll(e); return t + (DICE[0][f[0]] === DICE[1][f[1]] ? 1 : 0); }, 0);
+    const rr = total - S.log.length;
+    const plural = (n, w) => n + ' ' + w + (n === 1 ? '' : 's');
+    $('stats').textContent = total ? `${plural(total, 'roll')} · ${plural(dbl, 'double')} · ${plural(rr, 're-roll')}` : 'No rolls yet';
+    const wrap = $('score-wrap');
+    wrap.scrollTop = wrap.scrollHeight;
+  }
+
+  function renderWho() { const el = $('who-' + S.mode); if (el) el.checked = true; }
+  function renderSound() {
+    const b = $('sound');
+    b.setAttribute('aria-pressed', String(S.sound));
+    b.classList.toggle('off', !S.sound);
+    $('sound-label').textContent = S.sound ? 'Sound on' : 'Sound off';
+  }
+  function renderStage() {
+    $('stage').setAttribute('aria-label', `Die 1 shows ${PIECES[DICE[0][S.face[0]]].name}. Die 2 shows ${PIECES[DICE[1][S.face[1]]].name}.`);
+  }
+  function render(reveal) { renderTurns(); renderCall(reveal); renderActions(); renderScore(); renderWho(); renderSound(); renderStage(); }
+
+  function renderStatic() {
+    const tile = (cls, p) => `<span class="mini ${cls}" title="${PIECES[p].name}" aria-hidden="true">${PIECES[p].g}${VS}</span>`;
+    DICE.forEach((faces, d) => {
+      $('faces' + d).innerHTML = faces.map(p => tile(d ? 'rose' : 'box', p)).join('')
+        + `<span class="sr">${faces.map(p => PIECES[p].name).join(', ')}</span>`;
+    });
+    const o = computeOdds();
+    const row = (lead, name, n) => `<li><span class="o-name">${lead}${name}</span>`
+      + `<span class="o-bar" aria-hidden="true"><i style="width:${(100 * n / o.total).toFixed(2)}%"></i></span>`
+      + `<span class="o-num">${Math.round(100 * n / o.total)}%</span><span class="o-frac">${n}/${o.total}</span></li>`;
+    $('o-list').innerHTML = ['K', 'Q', 'B', 'N', 'R', 'P'].map(p => row(tile('plain', p), PIECES[p].name, o.can[p])).join('');
+    $('o-extra').innerHTML = row('', 'Doubles', o.dbl) + row('', 'Castling allowed', o.castle);
+  }
+
+  // Felt fibres: a small noise tile, blended over the baize.
+  function makeNoise() {
+    try {
+      const c = document.createElement('canvas');
+      c.width = c.height = 128;
+      const x = c.getContext('2d'), img = x.createImageData(128, 128);
+      for (let i = 0; i < img.data.length; i += 4) {
+        const v = 110 + Math.random() * 145;
+        img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+        img.data[i + 3] = 255;
+      }
+      x.putImageData(img, 0, 0);
+      $('felt').style.setProperty('--noise', `url("${c.toDataURL('image/png')}")`);
+    } catch (e) { /* plain felt is fine */ }
+  }
+
+  /* ---------- actions ---------- */
+  function doRoll() {
+    if (rolling) return;
+    audio();
+    if (S.phase === 'rolled') S.turn = nextSide(S.turn);
+    const r = [randInt(6), randInt(6)];
+    S.log.push({ side: S.turn, rolls: [r] });
+    S.phase = 'rolled';
+    animate(r);
+  }
+  function doReroll() {
+    if (rolling || S.phase !== 'rolled' || !S.log.length) return;
+    audio();
+    const r = [randInt(6), randInt(6)];
+    S.log[S.log.length - 1].rolls.push(r);
+    animate(r);
+  }
+  function pickTurn(s) {
+    if (rolling || !canRoll(s) || S.turn === s) return;
+    S.turn = s;
+    S.phase = 'ready';
+    save(); render();
+  }
+  function setMode(m) {
+    if (rolling) { renderWho(); return; }
+    S.mode = m;
+    if (m === 'white' && S.turn !== 'w') { S.turn = 'w'; S.phase = 'ready'; }
+    if (m === 'black' && S.turn !== 'b') { S.turn = 'b'; S.phase = 'ready'; }
+    save(); render();
+  }
+  function askNew() {
+    if (rolling) return;
+    if (!S.log.length) { newGame(); return; }
+    $('ng-idle').hidden = true;
+    $('ng-confirm').hidden = false;
+    $('ng-no').focus();
+  }
+  function cancelNew() { $('ng-confirm').hidden = true; $('ng-idle').hidden = false; $('ng').focus(); }
+  function newGame() {
+    S.log = [];
+    S.phase = 'ready';
+    S.turn = S.mode === 'black' ? 'b' : 'w';
+    const wasConfirming = !$('ng-confirm').hidden;
+    $('ng-confirm').hidden = true;
+    $('ng-idle').hidden = false;
+    save(); render();
+    if (wasConfirming) $('ng').focus();
+  }
+
+  function onKey(ev) {
+    if (ev.defaultPrevented || ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    const t = ev.target, tag = t && t.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
+    if (ev.key === ' ' || ev.key === 'Enter') {
+      if (tag === 'BUTTON' || tag === 'A' || tag === 'LABEL') return;
+      ev.preventDefault();
+      doRoll();
+    } else if (ev.key === 'r' || ev.key === 'R') {
+      ev.preventDefault();
+      doReroll();
+    }
+  }
+  let resizeRaf = 0;
+  function onResize() {
+    cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(() => {
+      const old = G.size;
+      measure();
+      if (rolling || old === G.size) return;
+      for (let d = 0; d < 2; d++) {
+        pos[d] = { x: pos[d].x * G.size / old, y: pos[d].y * G.size / old };
+        applyDie(d, rot[d], 0, pos[d]);
+      }
+    });
+  }
+
+  let bound = false;
+  function bind() {
+    $('roll').addEventListener('click', doRoll);
+    $('reroll').addEventListener('click', doReroll);
+    $('turn-w').addEventListener('click', () => pickTurn('w'));
+    $('turn-b').addEventListener('click', () => pickTurn('b'));
+    document.querySelectorAll('input[name="who"]').forEach(inp => inp.addEventListener('change', () => { if (inp.checked) setMode(inp.value); }));
+    $('sound').addEventListener('click', () => {
+      S.sound = !S.sound;
+      if (S.sound) clack(0.5, true);
+      save(); renderSound();
+    });
+    $('ng').addEventListener('click', askNew);
+    $('ng-no').addEventListener('click', cancelNew);
+    $('ng-yes').addEventListener('click', newGame);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize);
+  }
+
+  function start(data) {
+    S = clean(data && data.S ? data.S : loadSaved());
+    rolling = false;
+    buildDice();
+    measure();
+    for (let d = 0; d < 2; d++) {
+      const [x, y] = FACE_ROT[FACES[S.face[d]]];
+      rot[d] = { x, y, z: REST_TILT[d] };
+      pos[d] = { x: 0, y: 0 };
+      applyDie(d, rot[d], 0, pos[d]);
+    }
+    makeNoise();
+    renderStatic();
+    if (!bound) { bind(); bound = true; }
+    render(false);
+  }
+
+  try { window.claude?.hot?.snapshot?.(() => ({ S })); } catch (e) { /* not in a viewer */ }
+  if (window.claude?.hot?.ready) window.claude.hot.ready(start);
+  else start(window.claude?.hot?.data ?? {});
+})();
+</script>
+
+</body></html>
